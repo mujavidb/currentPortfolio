@@ -1,0 +1,24 @@
+{
+	"Name": "Mujavid Bukhari",
+	"Roles" : [
+		"Software Developer",
+		"Designer",
+		"Teacher"
+	],
+	"Website" : {
+		"Current" : [
+			"SVG Images",
+			"Flexbox Slider",
+			"Responsive (widths and heights)",
+			"Critical CSS",
+			"CSS3 Animations",
+		],
+		"Future": [
+			"Lazyloading images",
+			"Web workers to run offline",
+			"Canvas 2D Masking",
+			"OS independent custom form inputs",
+			"Reactive"
+		]
+	}
+}
