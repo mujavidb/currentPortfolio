@@ -1,5 +1,7 @@
-function p(x) { console.log(x);}
+//For debugging
+function p(x) { console.log(x); }
 
+//Object literal
 var mysite = {
 	
 	// Initialise all modules
@@ -10,6 +12,10 @@ var mysite = {
 		mysite.backgroundFade.init();
 
 		mysite.imageSlider.init();
+		
+		mysite.mainFade.init();
+
+		mysite.welcome.init();
 
 	},
 	util: {
@@ -26,9 +32,26 @@ var mysite = {
 		    );
 		}
 	},
-	panelFade: {
+	welcome: {
+		//FIXME: Write welcome_message as a single string
 		init: function(){
-
+			var welcome_message = "\n" +
+			"***************************************************************\n" +
+				"******************* Peaking under the hood? *******************\n" +
+				"****** This site is written in HTML, SASS and JavaScript ******\n" +
+				"******** You can see the full source code on my GitHub ********\n" +
+				"************* https://github.com/mujavidb/mysite/ *************\n" +
+				"***************************************************************\n" +
+				"******************** To see future features *******************\n" +
+				"********************* $ curl mujavidb.com *********************\n" +
+				"***************************************************************\n";
+			console.log(welcome_message);
+			
+		}
+	},
+	mainFade: {
+		init: function(){
+			document.querySelector("main").style.opacity = 1;
 		}
 	},
 	iphoneFloat: {
@@ -36,9 +59,7 @@ var mysite = {
 			var container = document.querySelector('.scoodle .left_block');
 			var phone = document.getElementById('scoodle_svg');
 			function floatDown(){
-				p("checking");
 				if (mysite.util.isInRange(container, 0.3)) {
-					p("done");
 					container.classList.add('floatNow');
 					phone.classList.add('fadeUp');
 					document.removeEventListener('scroll', floatDown);

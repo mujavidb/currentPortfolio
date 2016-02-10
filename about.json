@@ -12,6 +12,7 @@
 			"Responsive (widths and heights)",
 			"Critical CSS",
 			"CSS3 Animations",
+			"SASS Precompilation"
 		],
 		"Future": [
 			"Lazyloading images",

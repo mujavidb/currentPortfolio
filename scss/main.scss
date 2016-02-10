@@ -1,27 +1,9 @@
-@import "normalize.css";
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic);
 
-@mixin selection($area, $color){
-	#{$area} h1::selection,
-	#{$area} h2::selection,
-	#{$area} h3::selection,
-	#{$area} p::selection,
-	#{$area} a::selection,
-	#{$area} span::selection {
-		background-color: $color;
-		color: white;
-	}
-
-	#{$area} h1::-moz-selection,
-	#{$area} h2::-moz-selection,
-	#{$area} h3::-moz-selection,
-	#{$area} p::-moz-selection,
-	#{$area} a::-moz-selection,
-	#{$area} span::-moz-selection {
-		background-color: $color;
-		color: white;
-	}	
-}
+@import "normalize";
+@import "mixins";
+@import "variables";
+@import "animations";
 
 /* SETUP STYLES*/
 
@@ -70,7 +52,7 @@ a:focus {
 .light_text,
 .light_text a,
 .light_text a:visited {
-	color: rgba(255,255,255,0.85);
+	color: $light-text;
 }
 
 .light_text a:hover {
@@ -80,7 +62,7 @@ a:focus {
 .dark_text,
 .dark_text a,
 .dark_text a:visited {
-	color: #6c6c6c;
+	color: $dark-text;
 }
 
 .dark_text a:hover {
@@ -105,55 +87,16 @@ main {
 	.light_text,
 	.light_text a,
 	.light_text a:visited {
-		color: #E3E3E3;
+		color: $mobile-light-text;
 	}
 	.dark_text,
 	.dark_text a,
 	.dark_text a:visited {
-		color: #5C5C5C;
+		color: $dark-text;
 	}
 }
 
 /* SETUP ANIMATIONS */
-
-@-webkit-keyframes iphoneFloatDown {
-	from { transform: translate3d(0, -20px, 0) rotate(1deg);}
-	to { transform: translate3d(0, 25px, 0) rotate(-9deg);}
-}
-@keyframes iphoneFloatDown {
-	from { transform: translate3d(0, -20px, 0) rotate(1deg);}
-	to { transform: translate3d(0, 25px, 0) rotate(-9deg);}
-}
-
-@-webkit-keyframes shadowMutate {
-	from { transform: scale(0.45, 0.45);}
-	to { transform: scale(1, 1);}
-}
-
-@keyframes shadowMutate {
-	from { transform: scale(0.45, 0.45);}
-	to { transform: scale(1, 1);}
-}
-
-@-webkit-keyframes fadeIn{
-	from {opacity: 0;}
-	to {opacity: 1;}
-}
-
-@keyframes fadeIn{
-	from {opacity: 0;}
-	to {opacity: 1;}
-}
-
-@-webkit-keyframes fadeUp{
-	from {opacity: 0; transform: translate(0, 20px);}
-	to {opacity: 1; transform: translate(0, 0);}
-}
-
-@keyframes fadeUp{
-	from {opacity: 0; transform: translate(0, 20px);}
-	to {opacity: 1; transform: translate(0, 0);}
-}
 
 .fadeIn,
 .fadeUp {
@@ -176,7 +119,6 @@ main {
 }
 
 /* PANEL SECTION SETUP */
-
 
 .panel {
 	width: 100%;
@@ -272,8 +214,8 @@ main {
 	width: 400px;
 	position: absolute;
 	top: 40%;
-	left: 60%;
-	color: #174465;
+	left: 50%;
+	color: $intro-text-blue;
 	font-size: 1.2em;
 }
 
@@ -343,7 +285,7 @@ main {
 	.intro .intro_text {
 		left: 0px;
 		bottom: 0px;
-		top:unset;
+		top: auto;
 		width: 100%;
 		padding: 10vw;
 		background-color: rgba(0, 0, 0, 0.2);
@@ -367,7 +309,7 @@ main {
 
 .satifs .left_block {
 	background: url(../img/satifs_bg.png) no-repeat center center;
-	background-color: #411358;
+	background-color: $purple;
 	background-size: cover;
 }
 
@@ -482,7 +424,7 @@ main {
 	padding:10px;
 	min-width: 140px;
 	text-align: center;
-	background-color: #2C97DE;
+	background-color: $corporate-blue;
 	color:white;
 	outline: none;
 	border: none;
@@ -492,28 +434,28 @@ main {
 }
 
 .social a:hover {
-	background-color: #2865BE;
+	background-color: $linkedin-blue-hover;
 }
 
 .social .linkedin {
-	background-color: #0073B5;
+	background-color: $linkedin-blue;
 }
 .social .linkedin:hover {
-	background-color: #005283;
+	background-color: $linkedin-blue-hover;
 }
 
 .social .github {
-	background-color: #777;
+	background-color: $github-grey;
 }
 .social .github:hover {
-	background-color: #474A59;
+	background-color: $github-grey-hover;
 }
 
 .social .behance {
-	background-color: #0B94E3;
+	background-color: $behance-blue;
 }
 .social .behance:hover {
-	background-color: #00507F;
+	background-color: $behance-blue-hover;
 }
 
 .social a::before {
@@ -607,7 +549,7 @@ main {
 
 .cc .wrapper {
 	overflow: hidden;
-	background-color: #5A7282;
+	background-color: $slider-green;
 	transition: background-color 0.3s ease;
 }
 
@@ -619,7 +561,7 @@ main {
 	padding: 0;
 	position: relative;
 	height: 94vh;
-	min-height: 720px;
+	min-height: 760px;
 }
 
 .slider .slide {
@@ -633,8 +575,8 @@ main {
 	-webkit-flex-grow: 1;
 	flex-shrink: 0;
 	-webkit-flex-shrink: 0;
-	flex-basis: unset;
-	-webkit-flex-basis: unset;
+	flex-basis: auto;
+	-webkit-flex-basis: auto;
 	width:100%;
 	transform: translateY(100%);
 	transition: all 0.3s ease-in;
@@ -728,9 +670,9 @@ main {
 /*************************/
 
 @include selection(".intro", black);
-@include selection(".scoodle", #D56969);
-@include selection(".satifs", #C4A9ED);
-@include selection(".ucl", #EDB441);
-@include selection(".cc", #59BDB6);
-@include selection(".safar", #59BDB6);
-@include selection(".about", #91CCE4);
+@include selection(".scoodle", $scoodle-red);
+@include selection(".satifs", $satifs-lilac);
+@include selection(".ucl", $ucl-yellow);
+@include selection(".cc", $cc-green);
+@include selection(".safar", $safar-green);
+@include selection(".about", $about-blue);
