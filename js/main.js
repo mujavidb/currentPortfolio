@@ -7,15 +7,15 @@ var mysite = {
 	// Initialise all modules
 	init: function () {
 
-		mysite.iphoneFloat.init();
-
-		mysite.backgroundFade.init();
-
-		mysite.imageSlider.init();
+		mysite.welcome.init();
 		
 		mysite.mainFade.init();
 
-		mysite.welcome.init();
+		mysite.iphoneFloat.init();
+
+		mysite.imageSlider.init();
+
+		mysite.backgroundFade.init();
 
 	},
 	util: {
