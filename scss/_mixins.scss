@@ -13,7 +13,6 @@
 		background-color: $color;
 		color: white;
 	}
-
 	#{$area} h1::-moz-selection,
 	#{$area} h2::-moz-selection,
 	#{$area} h3::-moz-selection,
@@ -22,5 +21,5 @@
 	#{$area} span::-moz-selection {
 		background-color: $color;
 		color: white;
-	}	
+	}
 }
