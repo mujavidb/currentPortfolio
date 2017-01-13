@@ -74,7 +74,13 @@ var mysite = {
     },
     mainFade: {
         init: function() {
-            document.querySelector("main").style.opacity = 1;
+            var image = document.createElement("img");
+            image.src = "./img/intro_bg_.jpg";
+            image.addEventListener('load', function(){
+                document.querySelector("main").style.opacity = 1;
+                image.parentNode.removeChild(image);
+            });
+            // document.querySelector("main").style.opacity = 1;
         }
     },
     iphoneFloat: {

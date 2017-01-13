@@ -12,14 +12,13 @@
 			"Responsive (widths and heights)",
 			"Critical CSS",
 			"CSS3 Animations",
-			"SASS Precompilation"
+			"SASS Precompilation",
+			"Custom console messaging"
 		],
 		"Future": [
-			"Lazyloading images",
 			"Web workers to run offline",
 			"Canvas 2D Masking",
-			"OS independent custom form inputs",
-			"Reactive"
+			"OS independent custom form inputs"
 		]
 	}
 }
