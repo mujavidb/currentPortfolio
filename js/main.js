@@ -61,7 +61,7 @@ var mysite = {
                 var welcome_message = "\n" +
                     "***************************************************************\n" +
                     "******************* Peaking under the hood? *******************\n" +
-                    "****** This site is written in HTML, SASS and JavaScript ******\n" +
+                    "********* This site is written in SASS and JavaScript *********\n" +
                     "******** You can see the full source code on my GitHub ********\n" +
                     "************* https://github.com/mujavidb/mysite/ *************\n" +
                     "***************************************************************\n" +
@@ -80,7 +80,6 @@ var mysite = {
                 document.querySelector("main").style.opacity = 1;
                 image.parentNode.removeChild(image);
             });
-            // document.querySelector("main").style.opacity = 1;
         }
     },
     iphoneFloat: {
