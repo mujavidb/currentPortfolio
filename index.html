@@ -12,7 +12,7 @@
 
 	<!-- CRITICAL CSS - to prevent Flash Of Unstyled Content -->
 	<style type="text/css">
-		html {
+/* 		html {
 			font-size: 17px;
 			line-height: 1.6;
 		}
@@ -123,7 +123,7 @@
 				box-sizing: border-box;
 				color:white;
 			}
-		}
+		} */
 	</style>
 
 	<!-- STYLESHEETS -->
@@ -141,146 +141,160 @@
 
 </head>
 <body>
-	<main style="opacity:0;transition: opacity 1s ease;">
+	<main>
 		<section class="panel intro light_text">
-			<div class="intro_text fadeUp">
+			<div class="center_block intro_content">
+				<img class="profile_pic" src="img/testo.png"/>
 				<h1 class="name">Mujavid Bukhari</h1>
 				<h3 class="titles">Developer. Designer. Entrepreneur.</h3>
-			</div>
-		</section>
-		<section class="panel satifs dark_text">
-			<div class="left_block">
-			</div>
-			<div class="right_block">
-				<div class="right_contents">
-					<div class="title_bar">
-						<h2 class="summary_title">Satifs</h2>
-						<h3 class="summary_dates">Fall <span>20</span>14 - present</h3>
-					</div>
-					<div class="summary_body">
-						<p>
-							Satifs is the UK's first interest-free loans company. It's also an engine driving social change, creating a platform to share stories, ideas and skills with the world.
-						</p>
-						<p>
-							I manage our online platform, through which we have raised over £40,000 for interest-free loans. As the technical lead, I also oversee recruitment, business strategy and operations. I speak at our events about career development and entrepreneurship.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="panel scoodle dark_text">
-			<div class="left_block">
-				<svg id="scoodle_svg" class="iphone" width="290" height="590">
-					<image x="0" y="0" width="290" height="590" xlink:href="img/gold_iphone.png" />
-					<image x="20" y="72" width="251" height="446" xlink:href="img/scoodle_screenshot.png" />
-				</svg>
-				<img class="scoodle_iphone" src="img/scoodle_iphone.png" width="290" height="590" alt="Scoodle App on iPhone">
-				<img class="iphone_shadow" src="img/scoodle_iphone_shadow.png" alt="Shadow of iPhone">
-			</div>
-			<div class="right_block">
-				<div class="right_contents">
-					<div class="title_bar">
-						<h2 class="summary_title">Scoodle</h2>
-						<h3 class="summary_dates">Fall <span>20</span>15 - present</h3>
-					</div>
-					<div class="summary_body">
-						<p>
-							Scoodle completely reimagines the tutoring experience. It is the world’s most advanced, intuitive, and secure tutor application system.
-						</p>
-						<p>
-							At Scoodle, I am responsible for interface design front end and mobile developement. As part of a duo of developers, I have built the beta for our iOS application. I have also designed over 30 different application views as well as all marketing and branding material.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="panel safar light_text">
-			<div class="left_block">
-			</div>
-			<div class="right_block">
-				<div class="right_contents">
-					<div class="title_bar">
-						<h2 class="summary_title">Safar Academy</h2>
-						<h3 class="summary_dates">Fall <span>20</span>15 - present</h3>
-					</div>
-					<div class="summary_body">
-						<p>
-							Safar Academy is a supplementary school in North London with five branches and its own internationally acclaimed syllabus.
-						</p>
-						<p>
-							At Safar Academy, I am building a student management suite used to aid the education of over 800 students. The system utilises an asynchronous, mobile-first UI for the front end built on bootstrap and JavaScript. The backend consists of several restful web services built in rails.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="panel ucl light_text">
-			<div class="left_block">
-			</div>
-			<div class="right_block">
-				<div class="right_contents">
-					<div class="title_bar">
-						<h2 class="summary_title">UCL</h2>
-						<h3 class="summary_dates">Fall <span>20</span>15 - present</h3>
-					</div>
-					<div class="summary_body">
-						<p>In fall 2015, I began reading Computer Science (BSc) at University College London. So far I have taken modules on <a href="http://www.cs.ucl.ac.uk/students/syllabus/undergrad/101p_principles_of_programming/">Programming Styles</a>, <a href="http://www.cs.ucl.ac.uk/students/syllabus/undergrad/104p_theory_ii/">Algorithms and Data Structures</a>, <a href="http://www.cs.ucl.ac.uk/students/syllabus/undergrad/103p_object_oriented_programming/">Object-oriented Programming</a> and <a href="http://www.cs.ucl.ac.uk/students/syllabus/undergrad/105p_robotics_programming/">Robotics</a>.</p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="panel cc dark_text">
-			<div class="left_block">
-				<div class="wrapper" id="sliderWrap">
-					<ul class="slider" id="mySlider">
-						<li class="slide one from_next">
-							<img src="img/cc_1.png" alt="Codecademy quiz result">
-						</li>
-						<li class="slide two">
-							<img src="img/cc_2.png" alt="Resources available in different coding languages">
-						</li>
-						<li class="slide three">
-							<img src="img/cc_3.png" alt="All classroom resources at a glance">
-						</li>
-					</ul>
-				</div>
-				<div class="slider_controls">
-					<button class="prev" title="Previous"></button>
-					<button class="next" title="Next"></button>
-				</div>
-			</div>
-			<div class="right_block">
-				<div class="right_contents">
-					<div class="title_bar">
-						<h2 class="summary_title">Codecademy</h2>
-						<h3 class="summary_dates">Summer <span>20</span>14 - Fall <span>20</span>14</h3>
-					</div>
-					<div class="summary_body">
-						<p>
-							With over 27 million users, Codecademy teaches the whole world to code. It is committed to building the best learning experience inside and out.
-						</p>
-						<p>
-							I created resources used to teach coding to over 100,000 students across the UK. We used these resources to aid, guide and empower teachers new to teaching coding.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="panel about light_text" id="backgroundDark">
-			<div class="about_me">
-				<p>
-					Based in London, I specialise in both mobile and web application developement. Before engineering, I freelanced as a designer for the last six years, working in print and interface design. I spend the bulk of my time working with high impact startups focusing on education and entrepreneurship.
-				</p>
-				<p>
-					This site is an ongoing project for me to try out the latest front end technologies. <span class="curl_me" title="Open your terminal">Curl</span> to find out more.
-				</p>
 				<div class="social">
-					<a class="linkedin" href="https://uk.linkedin.com/in/mujavid/" target="_blank" >LinkedIn</a>
-					<a class="github" href="https://github.com/mujavidb/" target="_blank" >GitHub</a>
-					<a class="behance" href="https://www.behance.net/mujavidb" target="_blank" >Behance</a>
+					<a class="linkedin" rel="me" href="https://uk.linkedin.com/in/mujavid/" target="_blank" >
+						<img src="img/icons/linkedin_g.svg">
+					</a>
+					<a class="github" rel="me" href="https://github.com/mujavidb/" target="_blank" >
+						<img src="img/icons/github_g.svg">
+					</a>
+					<a class="behance" rel="me" href="https://www.behance.net/mujavidb" target="_blank" >
+						<img src="img/icons/behance_g.svg">
+					</a>
 				</div>
 			</div>
 		</section>
+		<div class="experience">
+			<section class="panel satifs dark_text">
+				<div class="left_block">
+				</div>
+				<div class="right_block">
+					<div class="right_contents">
+						<div class="title_bar">
+							<h2 class="summary_title">Satifs</h2>
+							<h3 class="summary_dates">Fall <span>20</span>14 - present</h3>
+						</div>
+						<div class="summary_body">
+							<p>
+								Satifs is the UK's first interest-free loans company. It's also an engine driving social change, creating a platform to share stories, ideas and skills with the world.
+							</p>
+							<p>
+								I manage our online platform, through which we have raised over £40,000 for interest-free loans. As the technical lead, I also oversee recruitment, business strategy and operations. I speak at our events about career development and entrepreneurship.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel scoodle dark_text">
+				<div class="left_block">
+					<svg id="scoodle_svg" class="iphone" width="290" height="590">
+						<image x="0" y="0" width="290" height="590" xlink:href="img/gold_iphone.png" />
+						<image x="20" y="72" width="251" height="446" xlink:href="img/scoodle_screenshot.png" />
+					</svg>
+					<img class="scoodle_iphone" src="img/scoodle_iphone.png" width="290" height="590" alt="Scoodle App on iPhone">
+					<img class="iphone_shadow" src="img/scoodle_iphone_shadow.png" alt="Shadow of iPhone">
+				</div>
+				<div class="right_block">
+					<div class="right_contents">
+						<div class="title_bar">
+							<h2 class="summary_title">Scoodle</h2>
+							<h3 class="summary_dates">Fall <span>20</span>15 - present</h3>
+						</div>
+						<div class="summary_body">
+							<p>
+								Scoodle completely reimagines the tutoring experience. It is the world’s most advanced, intuitive, and secure tutor application system.
+							</p>
+							<p>
+								At Scoodle, I am responsible for interface design front end and mobile developement. As part of a duo of developers, I have built the beta for our iOS application. I have also designed over 30 different application views as well as all marketing and branding material.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel safar light_text">
+				<div class="left_block">
+				</div>
+				<div class="right_block">
+					<div class="right_contents">
+						<div class="title_bar">
+							<h2 class="summary_title">Safar Academy</h2>
+							<h3 class="summary_dates">Fall <span>20</span>15 - present</h3>
+						</div>
+						<div class="summary_body">
+							<p>
+								Safar Academy is a supplementary school in North London with five branches and its own internationally acclaimed syllabus.
+							</p>
+							<p>
+								At Safar Academy, I am building a student management suite used to aid the education of over 800 students. The system utilises an asynchronous, mobile-first UI for the front end built on bootstrap and JavaScript. The backend consists of several restful web services built in rails.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel ucl light_text">
+				<div class="left_block">
+				</div>
+				<div class="right_block">
+					<div class="right_contents">
+						<div class="title_bar">
+							<h2 class="summary_title">UCL</h2>
+							<h3 class="summary_dates">Fall <span>20</span>15 - present</h3>
+						</div>
+						<div class="summary_body">
+							<p>In fall 2015, I began reading Computer Science (BSc) at University College London. So far I have taken modules on <a href="http://www.cs.ucl.ac.uk/students/syllabus/undergrad/101p_principles_of_programming/">Programming Styles</a>, <a href="http://www.cs.ucl.ac.uk/students/syllabus/undergrad/104p_theory_ii/">Algorithms and Data Structures</a>, <a href="http://www.cs.ucl.ac.uk/students/syllabus/undergrad/103p_object_oriented_programming/">Object-oriented Programming</a> and <a href="http://www.cs.ucl.ac.uk/students/syllabus/undergrad/105p_robotics_programming/">Robotics</a>.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel cc dark_text">
+				<div class="left_block">
+					<div class="wrapper" id="sliderWrap">
+						<ul class="slider" id="mySlider">
+							<li class="slide one from_next">
+								<img src="img/cc_1.png" alt="Codecademy quiz result">
+							</li>
+							<li class="slide two">
+								<img src="img/cc_2.png" alt="Resources available in different coding languages">
+							</li>
+							<li class="slide three">
+								<img src="img/cc_3.png" alt="All classroom resources at a glance">
+							</li>
+						</ul>
+					</div>
+					<div class="slider_controls">
+						<button class="prev" title="Previous"></button>
+						<button class="next" title="Next"></button>
+					</div>
+				</div>
+				<div class="right_block">
+					<div class="right_contents">
+						<div class="title_bar">
+							<h2 class="summary_title">Codecademy</h2>
+							<h3 class="summary_dates">Summer <span>20</span>14 - Fall <span>20</span>14</h3>
+						</div>
+						<div class="summary_body">
+							<p>
+								With over 27 million users, Codecademy teaches the whole world to code. It is committed to building the best learning experience inside and out.
+							</p>
+							<p>
+								I created resources used to teach coding to over 100,000 students across the UK. We used these resources to aid, guide and empower teachers new to teaching coding.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel about light_text" id="backgroundDark">
+				<div class="center_block">
+					<p>
+						Based in London, I specialise in both mobile and web application developement. Before engineering, I freelanced as a designer for the last six years, working in print and interface design. I spend the bulk of my time working with high impact startups focusing on education and entrepreneurship.
+					</p>
+					<p>
+						This site is an ongoing project for me to try out the latest front end technologies. <span class="curl_me" title="Open your terminal">Curl</span> to find out more.
+					</p>
+					<div class="social">
+						<a class="linkedin" rel="me" href="https://uk.linkedin.com/in/mujavid/" target="_blank" >LinkedIn</a>
+						<a class="github" rel="me" href="https://github.com/mujavidb/" target="_blank" >GitHub</a>
+						<a class="behance" rel="me" href="https://www.behance.net/mujavidb" target="_blank" >Behance</a>
+					</div>
+				</div>
+			</section>
+		</div>
 	</main>
 
 	<!-- JAVASCRIPT -->

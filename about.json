@@ -18,7 +18,8 @@
 		"Future": [
 			"Web workers to run offline",
 			"Canvas 2D Masking",
-			"OS independent custom form inputs"
+			"OS independent custom form inputs",
+			"ECMAScript 2015"
 		]
 	}
 }
