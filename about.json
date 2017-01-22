@@ -7,19 +7,19 @@
 	],
 	"Website" : {
 		"Current" : [
-			"SVG Images",
+			"Optimised SVG Images",
 			"Flexbox Slider",
 			"Responsive (widths and heights)",
-			"Critical CSS",
-			"CSS3 Animations",
+			"Critical CSS (Prevent FOUC)",
+			"CSS3 Animations at 60fps",
 			"SASS Precompilation",
-			"Custom console messaging"
+			"ECMAScript 2015",
+			"NGINX Custom Curl Responses"
 		],
 		"Future": [
-			"Web workers to run offline",
+			"Web workers to run site offline",
 			"Canvas 2D Masking",
-			"OS independent custom form inputs",
-			"ECMAScript 2015"
+			"OS independent custom form inputs"
 		]
 	}
 }

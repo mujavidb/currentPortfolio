@@ -17,7 +17,7 @@ const mysite = {
 
         mysite.imageSlider.init()
 
-        mysite.backgroundFade.init()
+        mysite.scrollEffects.init()
 
         mysite.linkTracking.init()
 
@@ -72,7 +72,7 @@ const mysite = {
     },
     mainFade: {
         init: () => {
-            
+
         }
     },
     iphoneFloat: {
@@ -90,20 +90,20 @@ const mysite = {
             document.addEventListener('scroll', floatDown, false)
         }
     },
-    backgroundFade: {
+    scrollEffects: {
         init: () => {
             function adjustColor() {
                 if (proportion < 20) {
-                    document.body.style.backgroundColor = "#002030"
+                    document.body.classList.add("darken")
                     panel_container.style.boxShadow = "none"
                 } else {
-                    document.body.style.backgroundColor = panel_start
+                    document.body.classList.remove("darken")
                     panel_container.style.boxShadow = shadow_color
                 }
             }
             const panel = document.getElementById('backgroundDark')
             const panel_start = panel.style.backgroundColor
-            const panel_container = document.getElementsByTagName('main')[0]
+            const panel_container = document.querySelector('.experience')
             const shadow_color = panel_container.style.boxShadow
             let rect = panel.getBoundingClientRect()
             let proportion = (rect.top / panel.offsetHeight) * 100

@@ -11,16 +11,21 @@ html {
 	font-size: 17px;
 	line-height: 1.6;
 	-webkit-text-size-adjust: none;
+	background-color: $body-background;
 }
 
 body {
 	font-family: 'Lato', sans-serif;
 	font-weight: 400;
-	background-color: #F9F9F9;
+	background-color: $body-background;
 	transition: background-color 0.6s ease;
 	text-rendering: optimizelegibility;
 	-moz-osx-font-smoothing: grayscale;
 	font-feature-settings: "liga";
+}
+
+body.darken {
+	background-color: $body-background-dark;
 }
 
 h1, h2, h3, p, a {
@@ -71,7 +76,13 @@ a:focus {
 
 main {
 	width: 100vw;
-	background-color: white;
+	position: relative;
+	background-color: $body-background;
+}
+
+.experience {
+	box-shadow: 0 -1px 5px rgba(0,0,0,0.25);
+	opacity: 0;
 }
 
 @media (min-width: 1280px){
@@ -79,9 +90,6 @@ main {
 		width:1280px;
 		margin-right: auto;
 		margin-left: auto;
-	}
-	.experience {
-		box-shadow: 0 0 5px rgba(0,0,0,0.25);
 	}
 }
 
@@ -100,19 +108,19 @@ main {
 
 /* SETUP ANIMATIONS */
 
-.fadeIn,
 .fadeUp {
+	animation-name: fadeUp;
 	animation-timing-function: ease-out;
 	animation-duration: 2s;
 	animation-fill-mode: forwards;
 }
 
-.fadeIn {
-	animation-name: fadeIn;
-}
-
-.fadeUp {
-	animation-name: fadeUp;
+.bounceFadeUp {
+	animation-name: bounceFadeUp;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	animation-delay: 1s;
+	animation-fill-mode: forwards;
 }
 
 /* PANEL SECTION SETUP */
@@ -163,7 +171,8 @@ main {
 .intro {
 	flex-direction: row;
 	justify-content: center;
-	background-color: #F9F9F9;
+	margin-bottom: 10px;
+	background-color: $body-background;
 }
 
 .satifs,
@@ -294,43 +303,168 @@ main {
 	font-size: 1.2em;
 }
 
-.intro_content .profile_pic {
-	border-radius: 50%;
-    border: 1px solid #ccc;
+.profile_pic_container {
+	position: relative;
     width: 80px;
     height: 80px;
     margin-bottom: 15px;
-    box-sizing: border-box;
 }
 
+.pic_loader {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+}
+
+@keyframes centralExpansion {
+	from {
+		transform-origin: center center;
+		opacity:0;
+		transform: scale(1.0);
+	}
+	to {
+		opacity:1;
+		transform: scale(1.3334);
+	}
+}
+
+$intro-animation-delay: 0.6s;
+.profile_pic {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    opacity: 0;
+    border: 2px solid #ddd;
+
+    animation-name: centralExpansion;
+    animation-timing-function: cubic-bezier(0.75, 0, 0.175, 1);
+    animation-delay: $intro-animation-delay;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+}
+
+$intro-animation-delay: $intro-animation-delay + 0.1s;
 .intro_content h1 {
 	font-size: 1.2em;
 	margin: 0 0 -5px 0;
+	opacity: 0;
+	animation-name: fadeIn;
+	animation-timing-function: cubic-bezier(0.75, 0, 0.175, 1);
+	animation-delay: $intro-animation-delay;
+	animation-duration: 0.6s;
+	animation-fill-mode: forwards;
 }
 
+$intro-animation-delay: $intro-animation-delay + 0.2s;
 .intro_content h3 {
-	font-size: 0.9em;
+	font-size: 0.8em;
 	font-weight: 400;
+	opacity: 0;
 	color: #9c9c9c;
-	margin: 0 0 10px 0;
+	margin: 5px 0 15px 0;
+	animation-name: fadeIn;
+	animation-timing-function: cubic-bezier(0.75, 0, 0.175, 1);
+	animation-delay: $intro-animation-delay;
+	animation-duration: 0.6s;
+	animation-fill-mode: forwards;
 }
 
 .intro .social {
-	width:200px;
+	width: 250px;
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content:center;
+	justify-content:space-around;
 }
 
-.intro .social a {
+.intro a {
 	color: #9C9C9C;
-	margin-right: 15px;
 	text-decoration: none;
+	transition: all .2s ease-out;
+	position: relative;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content:center;
+	align-items:center;
+	box-sizing: border-box;
+	padding: 0 10px;
+	opacity: 0;
+	animation-name: fadeUpSmall;
+	animation-timing-function: ease-in;
+	animation-duration: 0.2s;
+	animation-fill-mode: forwards;
 }
 
-.intro .social img {
-	width: 20px;
-	height: 20px;
+$intro-animation-delay: $intro-animation-delay + 0.1s;
+@for $i from 1 through 4 {
+	.intro a:nth-child(#{$i}) {
+		animation-delay: $intro-animation-delay + (0.15s * $i);
+	}
+}
+
+$intro-animation-delay: $intro-animation-delay + 0.2s;
+.experience.bounceFadeUp {
+	animation-delay: $intro-animation-delay;
+}
+
+.intro a svg {
+	cursor: pointer;
+	transition: all .2s ease-out;
+}
+
+.intro a path {
+	fill: #9C9C9C;
+}
+
+.intro a span {
+	position: absolute;
+	top: 100%;
+	box-sizing: border-box;
+	padding-top: 10%;
+	color: #777;
+	font-size: 0.6em;
+	text-align: center;
+	opacity: 0;
+	transition: all 0.2s ease-out;
+}
+
+.intro a:hover {
+	transform: scale(1.1);
+}
+
+.intro a:hover span {
+	opacity: 1;
+}
+
+.intro .linkedin:hover path {
+	fill: $linkedin-blue;
+}
+.intro .linkedin:hover span {
+	color: $linkedin-blue;
+}
+
+.intro .github:hover path {
+	fill: $github-grey;
+}
+.intro .github:hover span {
+	color: $github-grey;
+}
+
+.intro .behance:hover path {
+	fill: $behance-blue;
+}
+.intro .behance:hover span {
+	color: $behance-blue;
+}
+
+.intro .codepen:hover path {
+	fill: $codepen-orange;
+}
+.intro .codepen:hover span {
+	color: $codepen-orange;
 }
 
 .satifs .left_block {
