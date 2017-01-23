@@ -2,31 +2,30 @@
   "name": "newPortfolio",
   "version": "1.1.0",
   "scripts": {
-    "build": "npm run build_js && npm run compile_sass",
-    "build_js": "babel src/js/main.js -w -o build/js/main.js",
-    "compile_sass": "node-sass --watch --output-style compressed --include-path scss src/scss/main.scss build/css/main.css",
+    "dev": "npm run watch_js && npm run watch_sass",
+    "watch_js": "babel src/js/main.js -w -o src/js/main.js",
+    "watch_sass": "node-sass --watch --output-style compressed --include-path scss src/scss/main.scss src/css/main.css",
 
-    "build_production": "npm run build_js_once && npm run compile_sass_once && npm run autoprefix_css",
-    "build_js_once": "babel src/js/main.js -o build/js/main.js",
-    "compile_sass_once": "node-sass --output-style compressed --include-path scss src/scss/main.scss build/css/main.css",
-    "autoprefix_css": "postcss --use autoprefixer build/css/main.css -d build/css/"
+    "build": "npm run build_js && npm run build_sass && npm run autoprefix && npm run move_files",
+    "build_js": "babel src/js/main.js -o build/js/main.js",
+    "build_sass": "node-sass --output-style compressed --include-path scss src/scss/main.scss build/css/main.css",
+    "autoprefix": "postcss --use autoprefixer build/css/main.css -d build/css/",
+    "move_files": "cp -R src/img/* build/img && cp src/index.html src/about.json build"
   },
   "keywords": [],
   "author": "Mujavid Bukhari",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^6.3.6",
+    "babel-core": "6.13.2",
     "babel-cli": "^6.10.1",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-es2015-webpack": "^6.4.1",
+    "babel-preset-es2015": "6.13.2",
+    "babel-preset-es2015-webpack": "6.4.3",
     "node-sass": "^3.8.0",
+    "autoprefixer": "^6.3.6",
     "postcss-cli": "^2.5.2"
   },
   "babel": {
     "minified": true,
-    "shouldPrintComment": false,
-    "presets": [
-      "babel-preset-es2015-webpack"
-    ]
+    "shouldPrintComment": false
   }
 }
