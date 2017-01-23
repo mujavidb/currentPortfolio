@@ -95,9 +95,11 @@ const mysite = {
             function adjustColor() {
                 if (proportion < 20) {
                     document.body.classList.add("darken")
+                    document.documentElement.classList.add("darken")
                     panel_container.style.boxShadow = "none"
                 } else {
                     document.body.classList.remove("darken")
+                    document.documentElement.classList.remove("darken")
                     panel_container.style.boxShadow = shadow_color
                 }
             }

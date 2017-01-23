@@ -1,3 +1,5 @@
 .sass-cache/
+node_modules/
 
-.connectFour/
+css/main.css.map
+npm_debug.log
