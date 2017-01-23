@@ -93,6 +93,8 @@ const mysite = {
     scrollEffects: {
         init: () => {
             function adjustColor() {
+            	let bg_rect = panel.getBoundingClientRect()
+            	let proportion = (bg_rect.top / panel.offsetHeight) * 100
                 if (proportion < 20) {
                     document.body.classList.add("darken")
                     document.documentElement.classList.add("darken")
@@ -103,19 +105,30 @@ const mysite = {
                     panel_container.style.boxShadow = shadow_color
                 }
             }
+            function adjustHeader(){
+            	const header_rect = header.getBoundingClientRect()
+            	const relative_header = (header_rect.top / header.offsetHeight) * -1
+            	const scaledHeight = 4 * relative_header * 100
+            	const scaledOpacity = relative_header > 0.2 ? 1.15 - relative_header * 1.8
+    														: 1.15 - relative_header
+            	header.style.transform = `translate(0, ${scaledHeight}px)`
+            	header.style.opacity = scaledOpacity
+            }
+
+            //variables for about container fade
             const panel = document.getElementById('backgroundDark')
             const panel_start = panel.style.backgroundColor
             const panel_container = document.querySelector('.experience')
             const shadow_color = panel_container.style.boxShadow
-            let rect = panel.getBoundingClientRect()
-            let proportion = (rect.top / panel.offsetHeight) * 100
 
+            //variables for header fade out
+            const header = document.querySelector(".intro")
+            
             adjustColor()
-
+            adjustHeader()
             document.addEventListener('scroll', () => {
-                rect = panel.getBoundingClientRect()
-                proportion = (rect.top / panel.offsetHeight) * 100
                 adjustColor()
+                adjustHeader()
             }, false)
         }
     },

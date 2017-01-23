@@ -14,7 +14,8 @@
 			"CSS3 Animations at 60fps",
 			"SASS Precompilation",
 			"ECMAScript 2015",
-			"NGINX Custom Curl Responses"
+			"NGINX Custom Curl Responses",
+			"Parallax scroll on header"
 		],
 		"Future": [
 			"Web workers to run site offline",
