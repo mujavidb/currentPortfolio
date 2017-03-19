@@ -77,57 +77,34 @@ const mysite = {
     },
     iphoneFloat: {
         init: () => {
-            const container = document.querySelector('.scoodle .left_block')
-            const phone = document.getElementById('scoodle_svg')
-
-            function floatDown() {
+            const floatDown = () => {
                 if (mysite.util.isInRange(container, 0.3)) {
                     container.classList.add('floatNow')
                     phone.classList.add('fadeUp')
                     document.removeEventListener('scroll', floatDown)
                 }
             }
+            const container = document.querySelector('.scoodle .left_block')
+            const phone = document.getElementById('scoodle_svg')
+
             document.addEventListener('scroll', floatDown, false)
         }
     },
     scrollEffects: {
         init: () => {
-            function adjustColor() {
-            	let bg_rect = panel.getBoundingClientRect()
-            	let proportion = (bg_rect.top / panel.offsetHeight) * 100
-                if (proportion < 20) {
-                    document.body.classList.add("darken")
-                    document.documentElement.classList.add("darken")
-                    panel_container.style.boxShadow = "none"
-                } else {
-                    document.body.classList.remove("darken")
-                    document.documentElement.classList.remove("darken")
-                    panel_container.style.boxShadow = shadow_color
-                }
-            }
-            function adjustHeader(){
-            	const header_rect = header.getBoundingClientRect()
-            	const relative_header = (header_rect.top / header.offsetHeight) * -1
-            	const scaledHeight = 4 * relative_header * 100
-            	const scaledOpacity = relative_header > 0.2 ? 1.15 - relative_header * 1.8
-    														: 1.15 - relative_header
-            	header.style.transform = `translate(0, ${scaledHeight}px)`
-            	header.style.opacity = scaledOpacity
-            }
-
-            //variables for about container fade
-            const panel = document.getElementById('backgroundDark')
-            const panel_start = panel.style.backgroundColor
-            const panel_container = document.querySelector('.experience')
-            const shadow_color = panel_container.style.boxShadow
-
-            //variables for header fade out
             const header = document.querySelector(".intro")
+            const adjustHeader = () => {
+                const header_top_offset = header.getBoundingClientRect().top
+                const percentage_hidden_header = (header_top_offset / header.offsetHeight) * -1
+                const transformed_height = percentage_hidden_header * 400
+                const transformed_opacity = percentage_hidden_header > 0.2 ? 1.15 - percentage_hidden_header * 1.8
+                                                                           : 1.15 - percentage_hidden_header
+                header.style.transform = `translate(0, ${transformed_height}px)`
+                header.style.opacity = transformed_opacity
+            }
             
-            adjustColor()
             adjustHeader()
             document.addEventListener('scroll', () => {
-                adjustColor()
                 adjustHeader()
             }, false)
         }

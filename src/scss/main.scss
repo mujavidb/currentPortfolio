@@ -47,12 +47,19 @@ p {
 }
 
 a {
-	text-decoration: underline;
-	transition: color 0.3s ease;
+	text-decoration: none;
+	transition: all 0.3s ease;
 }
 
 a:focus {
 	outline: none;
+}
+
+.light_text a,
+.dark_text a {
+	background-repeat: repeat-x;
+	background-size: 2px .2em;
+    background-position: 0 1.12em;
 }
 
 .light_text,
@@ -60,9 +67,13 @@ a:focus {
 .light_text a:visited {
 	color: $light-text;
 }
+.light_text a {
+	background-image: linear-gradient(to bottom,rgba(255,255,255,0.6) 50%,transparent 50%);
+}
 
 .light_text a:hover {
 	color: white;
+	background-image: linear-gradient(to bottom,white 50%, transparent 50%);
 }
 
 .dark_text,
@@ -71,8 +82,13 @@ a:focus {
 	color: $dark-text;
 }
 
+.dark_text a {
+	background-image: linear-gradient(to bottom,rgba(20,20,20,0.6) 50%, transparent 50%);
+}
+
 .dark_text a:hover {
 	color: black;
+	background-image: linear-gradient(to bottom, black 50%, transparent 50%);
 }
 
 main {
@@ -84,6 +100,23 @@ main {
 .experience {
 	box-shadow: 0 -1px 5px rgba(0,0,0,0.25);
 	opacity: 0;
+}
+
+footer {
+	box-sizing: border-box;
+	padding: 15px;
+	background-color: transparent;
+	opacity: 0;
+	animation: fadeIn 0.5s ease-out 0.8s;
+	animation-fill-mode: forwards;
+}
+
+footer p {
+	color: #8c8c8c;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 0.06em;
+	font-size: 0.8em;
 }
 
 @media (min-width: 1280px){
@@ -165,6 +198,14 @@ main {
 	padding: 4rem 20px;
 }
 
+.about .center_block {
+	align-items: flex-start;
+}
+
+.center_block p {
+	margin: 0 0 10px;
+}
+
 .right_contents {
 	width: 80%;
 }
@@ -174,6 +215,9 @@ main {
 	justify-content: center;
 	margin-bottom: 10px;
 	background-color: $body-background;
+	transform: translate3d(0, 0, 0);
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
 }
 
 .satifs,
@@ -193,7 +237,7 @@ main {
 }
 
 .about {
-	background-color: #eee;
+	background-color: #fff;
 	height:100vh;
 }
 
@@ -263,13 +307,12 @@ main {
 
 .summary_body p {
 	width: 100%;
-	margin: 0 0 1rem 0;
-	padding: 0 5px 0;
 	font-size: 0.9rem;
+	margin: 0 5px 1rem 5px;
 }
 
 .summary_body p:last-child {
-	margin: 0;
+	margin: 0 5px 1rem 5px;
 }
 
 @media (max-width: 800px) {
@@ -298,58 +341,15 @@ main {
 
 /* SECTION SPECIFIC */
 
-.intro_content {
+.intro .center_block {
 	min-height:90vh;
 	color: $intro-text-blue;
 	font-size: 1.2em;
 }
 
-.profile_pic_container {
-	position: relative;
-    width: 80px;
-    height: 80px;
-    margin-bottom: 15px;
-}
+$intro-animation-delay: 0.3s;
 
-.pic_loader {
-	position: absolute;
-	top: 2px;
-	left: 2px;
-}
-
-@keyframes centralExpansion {
-	from {
-		transform-origin: center center;
-		opacity:0;
-		transform: scale(1.0);
-	}
-	to {
-		opacity:1;
-		transform: scale(1.3334);
-	}
-}
-
-$intro-animation-delay: 0.6s;
-.profile_pic {
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    box-sizing: border-box;
-    opacity: 0;
-    border: 2px solid #ddd;
-
-    animation-name: centralExpansion;
-    animation-timing-function: cubic-bezier(0.75, 0, 0.175, 1);
-    animation-delay: $intro-animation-delay;
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
-}
-
-$intro-animation-delay: $intro-animation-delay + 0.1s;
-.intro_content h1 {
+.intro .center_block h1 {
 	font-size: 1.2em;
 	margin: 0 0 -5px 0;
 	opacity: 0;
@@ -361,7 +361,7 @@ $intro-animation-delay: $intro-animation-delay + 0.1s;
 }
 
 $intro-animation-delay: $intro-animation-delay + 0.2s;
-.intro_content h3 {
+.intro .center_block h3 {
 	font-size: 0.8em;
 	font-weight: 400;
 	opacity: 0;
@@ -374,14 +374,15 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 	animation-fill-mode: forwards;
 }
 
-.intro .social {
+.social {
 	width: 250px;
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content:space-around;
+	align-self: center;
 }
 
-.intro a {
+.social a {
 	color: #9C9C9C;
 	text-decoration: none;
 	transition: all .2s ease-out;
@@ -391,7 +392,10 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 	justify-content:center;
 	align-items:center;
 	box-sizing: border-box;
-	padding: 0 10px;
+	padding: 0 10px 18px;
+}
+
+.intro a {
 	opacity: 0;
 	animation-name: fadeUpSmall;
 	animation-timing-function: ease-in;
@@ -411,18 +415,20 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 	animation-delay: $intro-animation-delay;
 }
 
-.intro a svg {
+.social a svg {
 	cursor: pointer;
+	transform: scale(1);
+	transform-origin: center center;
 	transition: all .2s ease-out;
 }
 
-.intro a path {
+.social a path {
 	fill: #9C9C9C;
 }
 
-.intro a span {
+.social a span {
 	position: absolute;
-	top: 100%;
+	top: 20px;
 	box-sizing: border-box;
 	padding-top: 10%;
 	color: #777;
@@ -432,39 +438,39 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 	transition: all 0.2s ease-out;
 }
 
-.intro a:hover {
+.social a:hover svg {
 	transform: scale(1.1);
 }
 
-.intro a:hover span {
+.social a:hover span {
 	opacity: 1;
 }
 
-.intro .linkedin:hover path {
+.social .linkedin:hover path {
 	fill: $linkedin-blue;
 }
-.intro .linkedin:hover span {
+.social .linkedin:hover span {
 	color: $linkedin-blue;
 }
 
-.intro .github:hover path {
+.social .github:hover path {
 	fill: $github-grey;
 }
-.intro .github:hover span {
+.social .github:hover span {
 	color: $github-grey;
 }
 
-.intro .behance:hover path {
+.social .behance:hover path {
 	fill: $behance-blue;
 }
-.intro .behance:hover span {
+.social .behance:hover span {
 	color: $behance-blue;
 }
 
-.intro .codepen:hover path {
+.social .codepen:hover path {
 	fill: $codepen-orange;
 }
-.intro .codepen:hover span {
+.social .codepen:hover span {
 	color: $codepen-orange;
 }
 
@@ -529,12 +535,11 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 	justify-content: center;
 }
 
-.about .social {
-	display: flex;
-	justify-content: space-around;
-	flex-flow: row nowrap;
-	margin-top: 35px;
+.about p {
 	width: 100%;
+	margin: 0 0 1rem 0;
+	padding: 0 5px 0;
+	font-size: 0.9rem;
 }
 
 .about .curl_me {
@@ -559,62 +564,6 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 .about .curl_me:hover::after {
 	content: "mujavidb.com";
 	padding: 0 5px;
-}
-
-.about .social a {
-	padding:10px;
-	min-width: 140px;
-	text-align: center;
-	background-color: $corporate-blue;
-	color:white;
-	outline: none;
-	border: none;
-	border-radius: 4px;
-	transition: background-color 0.3s ease;
-	text-decoration: none;
-}
-
-.about .linkedin {
-	background-color: $linkedin-blue;
-}
-.about .linkedin:hover {
-	background-color: $linkedin-blue-hover;
-}
-
-.about .github {
-	background-color: $github-grey;
-}
-.about .github:hover {
-	background-color: $github-grey-hover;
-}
-
-.about .behance {
-	background-color: $behance-blue;
-}
-.about .behance:hover {
-	background-color: $behance-blue-hover;
-}
-
-.about a::before {
-	content: "";
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	margin-right: 10px;
-	background-size: 20px;
-	background-repeat: no-repeat;
-}
-.about .linkedin::before {
-	background-image: url("../img/icons/linkedin.svg");
-	margin-bottom: -2px;
-}
-.about .github::before {
-	background-image: url("../img/icons/github.svg");
-	margin-bottom: -3px;
-}
-.about .behance::before {
-	background-image: url("../img/icons/behance.svg");
-	margin-bottom: -5px;
 }
 
 @media (max-width: 800px) {
