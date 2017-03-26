@@ -10,13 +10,14 @@
 html {
 	font-size: 17px;
 	line-height: 1.6;
-	-webkit-text-size-adjust: none
+	-webkit-text-size-adjust: none;
+	background-color: $body-background;
 }
 
 body {
 	font-family: 'Lato', sans-serif;
 	font-weight: 400;
-	background-color: #F9F9F9;
+	background-color: $body-background;
 	transition: background-color 0.6s ease;
 	text-rendering: optimizelegibility;
 	-moz-osx-font-smoothing: grayscale;
@@ -41,12 +42,19 @@ p {
 }
 
 a {
-	text-decoration: underline;
-	transition: color 0.3s ease;
+	text-decoration: none;
+	transition: all 0.3s ease;
 }
 
 a:focus {
 	outline: none;
+}
+
+.light_text a,
+.dark_text a {
+	background-repeat: repeat-x;
+	background-size: 2px .2em;
+    background-position: 0 1.12em;
 }
 
 .light_text,
@@ -54,9 +62,13 @@ a:focus {
 .light_text a:visited {
 	color: $light-text;
 }
+.light_text a {
+	background-image: linear-gradient(to bottom,rgba(255,255,255,0.6) 50%,transparent 50%);
+}
 
 .light_text a:hover {
 	color: white;
+	background-image: linear-gradient(to bottom,white 50%, transparent 50%);
 }
 
 .dark_text,
@@ -65,13 +77,41 @@ a:focus {
 	color: $dark-text;
 }
 
+.dark_text a {
+	background-image: linear-gradient(to bottom,rgba(20,20,20,0.6) 50%, transparent 50%);
+}
+
 .dark_text a:hover {
 	color: black;
+	background-image: linear-gradient(to bottom, black 50%, transparent 50%);
 }
 
 main {
 	width: 100vw;
-	background-color: white;
+	position: relative;
+	background-color: $body-background;
+}
+
+.experience {
+	box-shadow: 0 -1px 5px rgba(0,0,0,0.25);
+	opacity: 0;
+}
+
+footer {
+	box-sizing: border-box;
+	padding: 15px;
+	background-color: transparent;
+	opacity: 0;
+	animation: fadeIn 0.5s ease-out 0.8s;
+	animation-fill-mode: forwards;
+}
+
+footer p {
+	color: #8c8c8c;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 0.06em;
+	font-size: 0.8em;
 }
 
 @media (min-width: 1280px){
@@ -79,7 +119,6 @@ main {
 		width:1280px;
 		margin-right: auto;
 		margin-left: auto;
-		box-shadow: 0 0 5px rgba(0,0,0,0.25);
 	}
 }
 
@@ -98,24 +137,19 @@ main {
 
 /* SETUP ANIMATIONS */
 
-.fadeIn,
 .fadeUp {
-	-webkit-animation-timing-function: ease-out;
-	-webkit-animation-duration: 2s;
-	-webkit-animation-fill-mode: forwards;
+	animation-name: fadeUp;
 	animation-timing-function: ease-out;
 	animation-duration: 2s;
 	animation-fill-mode: forwards;
 }
 
-.fadeIn {
-	-webkit-animation-name: fadeIn;
-	animation-name: fadeIn;
-}
-
-.fadeUp {
-	-webkit-animation-name: fadeUp;
-	animation-name: fadeUp;
+.bounceFadeUp {
+	animation-name: bounceFadeUp;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	animation-delay: 1s;
+	animation-fill-mode: forwards;
 }
 
 /* PANEL SECTION SETUP */
@@ -129,9 +163,7 @@ main {
 	background-repeat: no-repeat;
 	position: relative;
 	display: flex;
-	display: -webkit-flex;
 	flex-wrap: wrap;
-	-webkit-flex-wrap: wrap;
 	overflow: hidden;
 
 }
@@ -141,17 +173,28 @@ main {
 	display: block;
 	height:100%;
 	flex: 1 0 50%;
-	-webkit-flex: 1 0 50%;
 }
 
 .right_block {
 	display: flex;
-	display: -webkit-flex;
 	align-items: center;
-	-webkit-align-items: center;
 	justify-content: center;
-	-webkit-justify-content: center;
 	height: 100%;
+}
+
+.center_block {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 512px;
+	padding: 4rem 20px;
+}
+
+.center_block p {
+	margin: 0 0 10px;
 }
 
 .right_contents {
@@ -159,8 +202,13 @@ main {
 }
 
 .intro {
-	background-image: url(../img/intro_bg_.jpg);
-	background-position: 30% 50%;
+	flex-direction: row;
+	justify-content: center;
+	margin-bottom: 10px;
+	background-color: $body-background;
+	transform: translate3d(0, 0, 0);
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
 }
 
 .satifs,
@@ -180,8 +228,15 @@ main {
 }
 
 .about {
-	background-color: rgb(2,32,47);
-	height:100vh;
+    align-items: center;
+	height: auto;
+	min-height: initial;
+	background-color: #fff;
+}
+
+.about .right_block,
+.about .left_block {
+	height: 100%;
 }
 
 @media (max-width: 800px) {
@@ -197,43 +252,18 @@ main {
 	.intro {
 		min-height: 100vh;
 	}
-	.about {
-		min-height: 100vh;
-	}
 	.left_block {
 		order: 1;
-		-webkit-order: 1;
 	}
 	.right_block {
 		order: 0;
-		-webkit-order: 0;
 	}
-}
-
-.intro .intro_text {
-	width: 400px;
-	position: absolute;
-	top: 40%;
-	left: 50%;
-	color: $intro-text-blue;
-	font-size: 1.2em;
-}
-
-.intro_text h1 {
-	margin: 0 0 -5px 0;
-}
-
-.intro_text h3 {
-	margin: 0 0 10px 0;
 }
 
 .title_bar {
 	display: flex;
-	display: -webkit-flex;
 	justify-content:space-between;
-	-webkit-justify-content:space-between;
 	align-items: flex-end;
-	-webkit-align-items: flex-end;
 	margin: 0 0 1rem 0;
 }
 
@@ -272,26 +302,15 @@ main {
 
 .summary_body p {
 	width: 100%;
-	margin: 0 0 1rem 0;
-	padding: 0 5px 0;
 	font-size: 0.9rem;
+	margin: 0 5px 1rem 5px;
 }
 
 .summary_body p:last-child {
-	margin: 0;
+	margin: 0 5px 1rem 5px;
 }
 
 @media (max-width: 800px) {
-	.intro .intro_text {
-		left: 0px;
-		bottom: 0px;
-		top: auto;
-		width: 100%;
-		padding: 10vw;
-		background-color: rgba(0, 0, 0, 0.2);
-		box-sizing: border-box;
-		color:white;
-	}
 	.summary_body {
 		max-width: none;
 	}
@@ -307,6 +326,139 @@ main {
 
 /* SECTION SPECIFIC */
 
+.intro .center_block {
+	min-height:90vh;
+	color: $intro-text-blue;
+	font-size: 1.2em;
+}
+
+$intro-animation-delay: 0.3s;
+
+.intro .center_block h1 {
+	font-size: 1.2em;
+	margin: 0 0 -5px 0;
+	opacity: 0;
+	animation-name: fadeIn;
+	animation-timing-function: cubic-bezier(0.75, 0, 0.175, 1);
+	animation-delay: $intro-animation-delay;
+	animation-duration: 0.6s;
+	animation-fill-mode: forwards;
+}
+
+$intro-animation-delay: $intro-animation-delay + 0.2s;
+.intro .center_block h3 {
+	font-size: 0.8em;
+	font-weight: 400;
+	opacity: 0;
+	color: #6c6c6c;
+	margin: 5px 0 15px 0;
+	animation-name: fadeIn;
+	animation-timing-function: cubic-bezier(0.75, 0, 0.175, 1);
+	animation-delay: $intro-animation-delay;
+	animation-duration: 0.6s;
+	animation-fill-mode: forwards;
+}
+
+.social {
+	width: 250px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content:space-around;
+	align-self: center;
+}
+
+.social a {
+	color: #9C9C9C;
+	text-decoration: none;
+	transition: all .2s ease-out;
+	position: relative;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content:center;
+	align-items:center;
+	box-sizing: border-box;
+	padding: 0 10px 18px;
+}
+
+.intro a {
+	opacity: 0;
+	animation-name: fadeUpSmall;
+	animation-timing-function: ease-in;
+	animation-duration: 0.2s;
+	animation-fill-mode: forwards;
+}
+
+$intro-animation-delay: $intro-animation-delay + 0.1s;
+@for $i from 1 through 4 {
+	.intro a:nth-child(#{$i}) {
+		animation-delay: $intro-animation-delay + (0.15s * $i);
+	}
+}
+
+$intro-animation-delay: $intro-animation-delay + 0.2s;
+.experience.bounceFadeUp {
+	animation-delay: $intro-animation-delay;
+}
+
+.social a svg {
+	cursor: pointer;
+	transform: scale(1);
+	transform-origin: center center;
+	transition: all .2s ease-out;
+}
+
+.social a path {
+	fill: #9C9C9C;
+}
+
+.social a span {
+	position: absolute;
+	top: 20px;
+	box-sizing: border-box;
+	padding-top: 10%;
+	color: #777;
+	font-size: 0.6em;
+	text-align: center;
+	opacity: 0;
+	transition: all 0.2s ease-out;
+}
+
+.social a:hover svg {
+	transform: scale(1.1);
+}
+
+.social a:hover span {
+	opacity: 1;
+}
+
+.social .linkedin:hover path {
+	fill: $linkedin-blue;
+}
+.social .linkedin:hover span {
+	color: $linkedin-blue;
+}
+
+.social .github:hover path {
+	fill: $github-grey;
+}
+.social .github:hover span {
+	color: $github-grey;
+}
+
+.social .behance:hover path {
+	fill: $behance-blue;
+}
+.social .behance:hover span {
+	color: $behance-blue;
+}
+
+.social .codepen:hover path {
+	fill: $codepen-orange;
+}
+.social .codepen:hover span {
+	color: $codepen-orange;
+}
+
 .satifs .left_block {
 	background: url(../img/satifs_bg.png) no-repeat center center;
 	background-color: $purple;
@@ -315,12 +467,22 @@ main {
 
 .scoodle .left_block {
 	display: flex;
-	display: -webkit-flex;
 	justify-content: center;
-	-webkit-justify-content: center;
 	align-items: center;
-	-webkit-align-items: center;
 	position: relative;
+}
+
+.about .left_block {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.about img {
+	width: 100%;
+	max-width: 400px;
+	margin: 50px 0;
 }
 
 .scoodle .iphone {
@@ -341,21 +503,16 @@ main {
 
 .floatNow .iphone_shadow,
 .floatNow .scoodle_iphone {
-	-webkit-animation-duration: 6s;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-fill-mode: forwards;
 	animation-duration: 6s;
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
 }
 
 .floatNow .scoodle_iphone {
-	-webkit-animation-name: iphoneFloatDown;
 	animation-name: iphoneFloatDown;
 }
 
 .floatNow .iphone_shadow {
-	-webkit-animation-name: shadowMutate;
 	animation-name: shadowMutate;
 }
 
@@ -368,116 +525,6 @@ main {
 .cc .left_block {
 	position: relative;
 	overflow: hidden;
-}
-
-.panel.about {
-	display: flex;
-	display: -webkit-flex;
-	justify-content: center;
-	-webkit-justify-content: center;
-	align-items: center;
-	-webkit-align-items: center;
-	min-height: 100vh;
-}
-
-.about .about_me {
-	width: 100%;
-	max-width: 512px;
-	padding: 4rem 20px;
-}
-
-.about_me .social {
-	display: flex;
-	display: -webkit-flex;
-	justify-content: space-around;
-	-webkit-justify-content: space-around;
-	flex-flow: row nowrap;
-	-webkit-flex-flow: row nowrap;
-	margin-top: 35px;
-}
-
-.about_me .curl_me {
-	box-sizing: border-box;
-	cursor: pointer;
-	transition: all 0.3s ease;
-}
-
-.about_me .curl_me:hover {
-	display: inline-block;
-	background-color: black;
-	color: lime;
-	padding: 0 5px;
-	border-radius: 3px;
-}
-
-.about_me .curl_me:hover::before {
-	content: "$";
-	padding: 0 5px;
-}
-
-.about_me .curl_me:hover::after {
-	content: "mujavidb.com";
-	padding: 0 5px;
-}
-
-.social a {
-	padding:10px;
-	min-width: 140px;
-	text-align: center;
-	background-color: $corporate-blue;
-	color:white;
-	outline: none;
-	border: none;
-	border-radius: 4px;
-	transition: background-color 0.3s ease;
-	text-decoration: none;
-}
-
-.social a:hover {
-	background-color: $linkedin-blue-hover;
-}
-
-.social .linkedin {
-	background-color: $linkedin-blue;
-}
-.social .linkedin:hover {
-	background-color: $linkedin-blue-hover;
-}
-
-.social .github {
-	background-color: $github-grey;
-}
-.social .github:hover {
-	background-color: $github-grey-hover;
-}
-
-.social .behance {
-	background-color: $behance-blue;
-}
-.social .behance:hover {
-	background-color: $behance-blue-hover;
-}
-
-.social a::before {
-	content: "";
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	margin-right: 10px;
-	background-size: 20px;
-	background-repeat: no-repeat;
-}
-.social .linkedin::before {
-	background-image: url("../img/icons/linkedin.svg");
-	margin-bottom: -2px;
-}
-.social .github::before {
-	background-image: url("../img/icons/github.svg");
-	margin-bottom: -3px;
-}
-.social .behance::before {
-	background-image: url("../img/icons/behance.svg");
-	margin-bottom: -5px;
 }
 
 @media (max-width: 800px) {
@@ -530,14 +577,25 @@ main {
 		margin-bottom: 5vh;
 	}
 
-	.about_me .social {
-		display: flex;
-		display: -webkit-flex;
-		justify-content: center;
-		-webkit-justify-content: center;
+	.about .left_block {
 		flex-flow: column nowrap;
-		-webkit-flex-flow: column nowrap;
+		justify-content: center;
+		height: auto;
+		order: 0;
 	}
+
+	.about img {
+		margin-right: 0;
+	}
+
+	.about .right_block {
+		order: 1;
+	}
+
+	.about .right_contents {
+		margin: 5vh 0;
+	}
+
 	.social a {
 		margin-bottom: 10px;
 	}
@@ -555,7 +613,6 @@ main {
 
 .slider {
 	display: flex;
-	display: -webkit-flex;
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -566,17 +623,11 @@ main {
 
 .slider .slide {
     display: flex;
-    display: -webkit-flex;
     justify-content: center;
-    -webkit-justify-content: center;
     align-items: center;
-    -webkit-align-items: center;
 	flex-grow: 1;
-	-webkit-flex-grow: 1;
 	flex-shrink: 0;
-	-webkit-flex-shrink: 0;
 	flex-basis: auto;
-	-webkit-flex-basis: auto;
 	width:100%;
 	transform: translateY(100%);
 	transition: all 0.3s ease-in;
@@ -594,17 +645,14 @@ main {
 
 .slider .one {
 	order: 0;
-	-webkit-order: 0;
 }
 
 .slider .two {
 	order: 1;
-	-webkit-order: 1;
 }
 
 .slider .three {
 	order: 2;
-	-webkit-order: 2;
 }
 
 .slide img {
