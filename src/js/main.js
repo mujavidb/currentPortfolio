@@ -11,8 +11,6 @@ const mysite = {
 
         mysite.welcome.init()
 
-        mysite.mainFade.init()
-
         mysite.iphoneFloat.init()
 
         mysite.imageSlider.init()
@@ -68,11 +66,6 @@ const mysite = {
                     "***************************************************************\n"
                 console.log(welcome_message)
             }
-        }
-    },
-    mainFade: {
-        init: () => {
-
         }
     },
     iphoneFloat: {

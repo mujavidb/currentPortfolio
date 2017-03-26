@@ -24,11 +24,6 @@ body {
 	font-feature-settings: "liga";
 }
 
-html.darken,
-body.darken {
-	background-color: #eee;
-}
-
 h1, h2, h3, p, a {
 	box-sizing: border-box;
 }
@@ -198,10 +193,6 @@ footer p {
 	padding: 4rem 20px;
 }
 
-.about .center_block {
-	align-items: flex-start;
-}
-
 .center_block p {
 	margin: 0 0 10px;
 }
@@ -320,16 +311,6 @@ footer p {
 }
 
 @media (max-width: 800px) {
-	.intro .intro_text {
-		left: 0px;
-		bottom: 0px;
-		top: auto;
-		width: 100%;
-		padding: 10vw;
-		background-color: rgba(0, 0, 0, 0.2);
-		box-sizing: border-box;
-		color:white;
-	}
 	.summary_body {
 		max-width: none;
 	}
@@ -369,7 +350,7 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 	font-size: 0.8em;
 	font-weight: 400;
 	opacity: 0;
-	color: #9c9c9c;
+	color: #6c6c6c;
 	margin: 5px 0 15px 0;
 	animation-name: fadeIn;
 	animation-timing-function: cubic-bezier(0.75, 0, 0.175, 1);
@@ -544,30 +525,6 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 .cc .left_block {
 	position: relative;
 	overflow: hidden;
-}
-
-.about .curl_me {
-	box-sizing: border-box;
-	cursor: pointer;
-	transition: all 0.3s ease;
-}
-
-.about .curl_me:hover {
-	display: inline-block;
-	background-color: black;
-	color: lime;
-	padding: 0 5px;
-	border-radius: 3px;
-}
-
-.about .curl_me:hover::before {
-	content: "$";
-	padding: 0 5px;
-}
-
-.about .curl_me:hover::after {
-	content: "mujavidb.com";
-	padding: 0 5px;
 }
 
 @media (max-width: 800px) {
