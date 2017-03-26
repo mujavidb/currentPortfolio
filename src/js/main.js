@@ -42,7 +42,7 @@ const mysite = {
                     "Peaking under the hood? \n" +
                     "You can see the full source\n" +
                     "code for this site on GitHub:\n" +
-                    "%chttps://github.com/mujavidb/portfolio/" +
+                    "%chttps://github.com/mujavidb/" +
                     "%c\nI plan on making improvements to this site,\n" +
                     "you can check them out with a simple curl\n\n" +
                     "%c$ curl mujavidb.com\n\n"
@@ -102,7 +102,7 @@ const mysite = {
                 header.style.transform = `translate(0, ${transformed_height}px)`
                 header.style.opacity = transformed_opacity
             }
-            
+
             adjustHeader()
             document.addEventListener('scroll', () => {
                 adjustHeader()
