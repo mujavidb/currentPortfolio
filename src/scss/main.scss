@@ -237,8 +237,15 @@ footer p {
 }
 
 .about {
+    align-items: center;
+	height: auto;
+	min-height: initial;
 	background-color: #fff;
-	height:100vh;
+}
+
+.about .right_block,
+.about .left_block {
+	height: 100%;
 }
 
 @media (max-width: 800px) {
@@ -252,9 +259,6 @@ footer p {
 		height: 94vh;
 	}
 	.intro {
-		min-height: 100vh;
-	}
-	.about {
 		min-height: 100vh;
 	}
 	.left_block {
@@ -487,6 +491,19 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 	position: relative;
 }
 
+.about .left_block {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.about img {
+	width: 100%;
+	max-width: 400px;
+	margin: 50px 0;
+}
+
 .scoodle .iphone {
 	display: none;
 }
@@ -528,19 +545,6 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 	position: relative;
 	overflow: hidden;
 }
-
-.panel.about {
-	display: flex;
-	flex-flow: row;
-	justify-content: center;
-}
-
-// .about p {
-// 	width: 100%;
-// 	margin: 0 0 1rem 0;
-// 	padding: 0 5px 0;
-// 	font-size: 0.9rem;
-// }
 
 .about .curl_me {
 	box-sizing: border-box;
@@ -616,11 +620,25 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 		margin-bottom: 5vh;
 	}
 
-	.about_me .social {
-		display: flex;
-		justify-content: center;
+	.about .left_block {
 		flex-flow: column nowrap;
+		justify-content: center;
+		height: auto;
+		order: 0;
 	}
+
+	.about img {
+		margin-right: 0;
+	}
+
+	.about .right_block {
+		order: 1;
+	}
+
+	.about .right_contents {
+		margin: 5vh 0;
+	}
+
 	.social a {
 		margin-bottom: 10px;
 	}
