@@ -18,7 +18,7 @@ deploy:
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: mujavidb.com
   skip_cleanup: true
-  s3_region: $AWS_DEFAULT_REGION
+  region: $AWS_DEFAULT_REGION
   local_dir: build
   # detect_encoding: true
   cache_control: "max-age=2592000"
