@@ -1,0 +1,28 @@
+language: node_js
+javascript:
+  - "7.4.0"
+cache:
+  - npm
+  - pip
+install:
+  - npm install
+  - pip install awscli
+script:
+  - npm run build
+deploy:
+  on:
+    branch: master
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: mujavidb.com
+  skip_cleanup: true
+  region: $AWS_DEFAULT_REGION
+  local_dir: build
+  # detect_encoding: true
+  cache_control: "max-age=2592000"
+after_deploy:
+  # Allow `awscli` to make requests to CloudFront.
+  - aws configure set preview.cloudfront true
+  # Invalidate every object in the targeted distribution.
+  - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
