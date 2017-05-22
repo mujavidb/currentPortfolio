@@ -7,7 +7,7 @@ install:
   - npm install
   - pip install --upgrade pip
   # - pip install --ignore-installed six
-  - sudo pip install awscli
+  - sudo pip install --user awscli
 script:
   - npm run build
 deploy:
@@ -18,7 +18,7 @@ deploy:
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: mujavidb.com
   skip_cleanup: true
-  region: $AWS_DEFAULT_REGION
+  s3_region: $AWS_DEFAULT_REGION
   local_dir: build
   # detect_encoding: true
   cache_control: "max-age=2592000"
