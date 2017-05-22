@@ -6,6 +6,7 @@ cache:
   - pip
 install:
   - npm install
+  - pip install --upgrade pip
   - pip install awscli
 script:
   - npm run build
