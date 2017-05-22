@@ -20,10 +20,8 @@ deploy:
   skip_cleanup: true
   region: $AWS_DEFAULT_REGION
   local_dir: build
-  # detect_encoding: true
+  acl: public_read
   cache_control: "max-age=2592000"
 after_deploy:
-  # Allow `awscli` to make requests to CloudFront.
   - aws configure set preview.cloudfront true
-  # Invalidate every object in the targeted distribution.
   - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
