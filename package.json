@@ -8,7 +8,7 @@
     "build_js": "babel src/js/main.js --minified -o build/js/main.js",
     "build_sass": "node-sass --output-style compressed --include-path scss src/scss/main.scss build/css/main.css",
     "autoprefix": "postcss build/css/main.css --use postcss-cssnext -d ./build/css",
-    "move_files": "cp -R src/img/* build/img; cp src/index.html src/robots.txt build"
+    "move_files": "cp -R src/img/* build/img; cp src/*.html src/robots.txt build"
   },
   "keywords": [],
   "author": "Mujavid Bukhari",
