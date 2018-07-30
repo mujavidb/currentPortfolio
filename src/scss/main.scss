@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic);
+@import "https://fonts.googleapis.com/css?family=Lato:400,300,300italic";
 
 @import "normalize";
 @import "mixins";
@@ -94,7 +94,8 @@ main {
 
 .experience {
 	box-shadow: 0 -1px 5px rgba(0,0,0,0.25);
-	opacity: 0;
+    opacity: 0;
+    border-radius: 4px;
 }
 
 footer {
@@ -191,6 +192,16 @@ footer p {
 	max-width: 512px;
 	padding: 4rem 20px;
 }
+.about .center_block {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 512px;
+	padding: 0;
+}
 
 .center_block p {
 	margin: 0 0 10px;
@@ -210,6 +221,11 @@ footer p {
 	backface-visibility: hidden;
 }
 
+.about .intro {
+	height: 20vh;
+	min-height: 220px;
+}
+
 .satifs,
 .cc {
 	background-color: white;
@@ -226,11 +242,163 @@ footer p {
 	background-image: url(../img/ucl_bg.jpg);
 }
 
-.about {
+.panel.about {
     align-items: center;
 	height: auto;
 	min-height: initial;
 	background-color: #fff;
+}
+
+.story {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.story h1 {
+    font-size: 52px;
+    font-weight: 500;
+    color: #E6325A;
+    text-align: center;
+    margin-top: 40px;
+    text-transform: uppercase;
+    position: relative;
+    letter-spacing: 10px;
+    text-shadow: 0px 2px 15px rgba(230, 114, 78, 0);
+    background: -webkit-linear-gradient(top, #E6724E 0%,#E6724E 50%,#E6325A 50%,#E6325A 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    transition: letter-spacing 1s ease, text-shadow 1s ease;
+    user-select: none;
+    cursor: default;
+    will-change: auto;
+
+    &:hover {
+        letter-spacing: 12px;
+        text-shadow: 0px 0px 15px rgba(230, 114, 78, 0.2);
+    }
+
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        width: 150px;
+        margin: 20px 24px;
+        height: 2px;
+        top: 20px;
+    }
+
+    &:before {
+        right: 100%;
+        border-bottom: 3px solid #E6724E;
+    }
+
+    &:after {
+        left: 100%;
+        border-bottom: 3px solid #E6325A;
+    }
+}
+
+.story p {
+    font-size: 18px;
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.7;
+    color: #5c5c5c;
+    margin: 0 0 20px 0;
+}
+
+.story a {
+    display: inline-block;
+    position: relative;
+    color: #E6555E;
+    text-decoration: none;
+}
+
+.story a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 2px;
+    left: 0;
+    background-color: rgb(227, 191, 193);
+}
+
+.story a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 2px;
+    left: 0;
+    background-color: #E6555E;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.story a:hover {
+    text-decoration: none;
+}
+
+.story a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.story figure {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.story img {
+    border-radius: 4px;
+    width: 100%;
+    // background-color: white;
+    box-shadow: 0 1px 12px -1px rgba(0,0,0,0.25);
+    margin-bottom: 10px;
+    position: relative;
+    transition: all 1s ease;
+
+    &:hover {
+        transform: scale(1.01);
+        box-shadow: 0 1px 18px 2px rgba(0,0,0,0.15);
+    }
+}
+
+.story figcaption {
+    margin: 0 20px 0;
+    font-size: 14px;
+    font-style: italic;
+    color: #7c7c7c;
+    text-align: center;
+}
+
+.story figcaption a {
+    color: #4c4c4c;
+}
+
+.story figcaption a::before {
+    background-color: #9c9c9c;
+    height: 1px;
+    bottom: 2px;
+}
+
+.story figcaption a::after {
+    background-color: #5c5c5c;
+    transition: transform 0.3s ease-out;
+    height: 1px;
+    bottom: 2px;
+}
+
+.story figure:last-of-type {
+    margin-bottom: 50px;
 }
 
 .about .right_block,
@@ -328,7 +496,11 @@ footer p {
 .intro .center_block {
 	min-height:90vh;
 	color: $intro-text-blue;
-	font-size: 1.2em;
+    font-size: 1.2em;
+}
+
+.about .intro .center_block {
+	min-height: unset;
 }
 
 $intro-animation-delay: 0.3s;
@@ -478,7 +650,7 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 	align-items: center;
 }
 
-.about img {
+.panel.about img {
 	width: 100%;
 	max-width: 400px;
 	margin: 50px 0;
