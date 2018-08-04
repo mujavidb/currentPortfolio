@@ -227,7 +227,8 @@ footer p {
 }
 
 .satifs,
-.cc {
+.cc,
+.google {
 	background-color: white;
 }
 
@@ -267,10 +268,10 @@ footer p {
     position: relative;
     letter-spacing: 10px;
     text-shadow: 0px 2px 15px rgba(230, 114, 78, 0);
-    background: -webkit-linear-gradient(top, #E6724E 0%,#E6724E 50%,#E6325A 50%,#E6325A 100%);
+    background-image: -webkit-linear-gradient(90deg, #FFAA74 0%,#FFAA74 50%,#F83866 50%,#F83866 100%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    transition: letter-spacing 1s ease, text-shadow 1s ease;
+    transition: all 1s ease;
     user-select: none;
     cursor: default;
     will-change: auto;
@@ -292,12 +293,12 @@ footer p {
 
     &:before {
         right: 100%;
-        border-bottom: 3px solid #E6724E;
+        border-bottom: 3px solid #FFAA74;
     }
 
     &:after {
         left: 100%;
-        border-bottom: 3px solid #E6325A;
+        border-bottom: 3px solid #F83866;
     }
 }
 
@@ -360,7 +361,6 @@ footer p {
 .story img {
     border-radius: 4px;
     width: 100%;
-    // background-color: white;
     box-shadow: 0 1px 12px -1px rgba(0,0,0,0.25);
     margin-bottom: 10px;
     position: relative;
@@ -431,12 +431,12 @@ footer p {
 
         &:before {
             top: -10px;
-            border-bottom: 3px solid #E6724E;
+            border-bottom: 3px solid #FFAA74;
         }
 
         &:after {
             top: 60px;
-            border-bottom: 3px solid #E6325A;
+            border-bottom: 3px solid #F83866;
         }
     }
     .story p {
@@ -561,6 +561,7 @@ footer p {
 $intro-animation-delay: 0.3s;
 
 .intro .center_block h1 {
+    color: $intro-text-blue;
 	font-size: 1.2em;
 	margin: 0 0 -5px 0;
 	opacity: 0;
@@ -568,7 +569,7 @@ $intro-animation-delay: 0.3s;
 	animation-timing-function: cubic-bezier(0.75, 0, 0.175, 1);
 	animation-delay: $intro-animation-delay;
 	animation-duration: 0.6s;
-	animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 
 $intro-animation-delay: $intro-animation-delay + 0.2s;
@@ -691,6 +692,12 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 	background-size: cover;
 }
 
+.google .left_block {
+	background: url(../img/google.jpg) no-repeat center center;
+	background-color: $scoodle-red;
+	background-size: cover;
+}
+
 .scoodle .left_block {
 	display: flex;
 	justify-content: center;
@@ -754,6 +761,10 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 }
 
 @media (max-width: 800px) {
+	.google .left_block {
+		background-size: cover;
+		height: 50vh;
+	}
 	.satifs .left_block {
 		background-size: cover;
 		height: 50vh;
@@ -950,3 +961,4 @@ $intro-animation-delay: $intro-animation-delay + 0.2s;
 @include selection(".cc", $cc-green);
 @include selection(".safar", $safar-green);
 @include selection(".about", $about-blue);
+@include selection(".story", #FFB9B2);

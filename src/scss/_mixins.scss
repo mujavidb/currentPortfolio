@@ -11,7 +11,8 @@
 	#{$area} a::selection,
 	#{$area} span::selection {
 		background-color: $color;
-		color: white;
+        color: white;
+        text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
 	}
 	#{$area} h1::-moz-selection,
 	#{$area} h2::-moz-selection,
@@ -20,6 +21,7 @@
 	#{$area} a::-moz-selection,
 	#{$area} span::-moz-selection {
 		background-color: $color;
-		color: white;
+        color: white;
+        text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
 	}
 }

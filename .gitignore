@@ -2,6 +2,4 @@
 node_modules/
 
 build/
-
-css/main.css.map
 npm_debug.log
