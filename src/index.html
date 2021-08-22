@@ -87,11 +87,14 @@
 		</div>
 
 		<footer>
-			<p>Mujavid Bukhari &middot; 2018</p>
+			<p>Mujavid Bukhari &middot; <span id="currentDate"></span></p>
 		</footer>
 	</main>
 
 	<!-- JAVASCRIPT -->
 	<script type="text/javascript" src="js/main.js"></script>
+	<script>
+		document.getElementById("currentDate").innerHTML = new Date().getFullYear()
+	</script>
 </body>
 </html>
